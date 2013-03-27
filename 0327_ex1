@@ -1,0 +1,22 @@
+def sort_age(dict):
+    age_name = {}
+
+               
+    for name in dict:
+        if(((dict[name]/10)*10) in age_name):
+            age_name[(dict[name]/10)*10].append(name)
+        else:
+            age_name[(dict[name]/10)*10] = [name]
+
+    
+    for age in age_name:
+        print age,'s', age_name[age]
+
+
+name_age = {'minsu':23,'jisu':33,'john':21,'david':333,'hary':36,'messi':33,'ronaldo':27}
+sort_age(name_age)
+
+
+
+
+
