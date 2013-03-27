@@ -1,0 +1,16 @@
+import math
+
+def lng(x1,y1,x2,y2):
+    ax_x = x2-x1
+    ax_y = y2-y1
+
+    tmp = ax_x**2 + ax_y**2
+    return math.sqrt(tmp);
+
+
+x1 = input('Insert input x1 :')
+y1 = input('Insert input y1 :')
+x2 = input('Insert input x1 :')
+y2 = input('Insert input y2 :')
+
+print (lng(x1,y1,x2,y2))

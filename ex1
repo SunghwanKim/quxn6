@@ -1,0 +1,11 @@
+def print_name(name) :
+    print ('%s' %name)
+
+def print_rename(givenname,familyname) :
+    print ('your name :')
+    print_name(givenname)
+    print ('he is from')
+    print_name(familyname)
+    print ('family')
+
+print_rename('bruce','Lee')

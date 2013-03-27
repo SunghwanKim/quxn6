@@ -1,0 +1,12 @@
+def print_e(str) :
+    a=0
+    for char in str:
+        if(char == "e"):
+            a = a+1
+    print ('%d' % (a))
+
+
+
+str = "Next People"
+print_e(str)
+               

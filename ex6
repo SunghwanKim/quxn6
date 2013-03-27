@@ -1,0 +1,15 @@
+def checkspell(str):
+    tmp_char = str[::-1]
+    i=0
+    while (i != len(str)/2):
+        if(str[i] != tmp_char[i]):
+           print("different")
+           return
+        i = i+1
+    print("same")
+
+
+str = raw_input("input str :")
+checkspell(str)
+
+       

@@ -1,0 +1,10 @@
+def jdg(num) :
+    if (num >=0) :
+        return num
+    else:
+        return -num
+
+
+number = input("input number : ")
+jdg_num = jdg(number)
+print("jdg is %d" %jdg_num)        
