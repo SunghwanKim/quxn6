@@ -1,0 +1,11 @@
+def jisu(arg):
+    if check_argument(arg):
+        print "argument",arg, "is right"
+
+def check_argument(arg):
+    if type(arg) is int or type(arg) is str:
+        return True
+    else :
+        return False
+
+jisu(3)

@@ -1,0 +1,6 @@
+num=3
+if isinstance(num,int)  :
+          print num,"is number type"
+          3*3 = num*3
+
+print "mission complete"
