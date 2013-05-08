@@ -1,4 +1,5 @@
 from __future__ import print_function
+import re
 
 def get_line(input_str) :
 	path_and_errname = []
@@ -42,15 +43,20 @@ def get_report()	:
 
 		for line in log_file:
 			tmp = get_line(line)
-			## event name = tmp[0]
-			## path = tmp[1]
+			
 			if(tmp != None)	:	
-				if(tmp[1] in report[1])	:
-					report[0][tmp[1]] = report[0][tmp[1]] + 1 	# event counter
-					report[1][tmp[1]].append(tmp[0]) 			# add path
+				path = tmp[0]
+				eventname = tmp[1]
+
+				if(eventname in detail_report)	:
+					# path overap check
+					if(path not in detail_report[eventname]) :						
+						detail_report[eventname].append(path) 		# add eventname
+					summary_report[eventname] = summary_report[eventname] + 1 	# event counter
+					
 				else	:
-					report[0][tmp[1]] = 1 						# init count
-					report[1][tmp[1]] = [tmp[0] ]				# init key and add path
+					detail_report[eventname] = [path]				# init key and add eventname
+					summary_report[eventname] = 1 						# init count
 		return report	
 
 	except IOError:
@@ -66,11 +72,29 @@ def print_report(log):
 	for path in log[1]	:
 		print ("\n", path)
 		for each_path in log[1][path]	:
-			print (each_path.strip("\n"))
+			tmp_log = each_path.strip("\n")
+			tmp_re = re.search(r'\w+\.(jpg|png|gif)',tmp_log)
+			if(tmp_re == None):
+				print(tmp_log)
 
-f = open('./rep.txt', 'w')
-f.write("hello")
-f.close()
+
+def file_report(log):
+	f = open('./rep.txt', 'w')
+
+	f.write("[summary report]\n")
+	for counter in log[0] :
+		f.write (counter+ ":" + str(log[0][counter]) +"\n")
+
+	f.write("\n\n[detail report]")
+	for path in log[1]	:
+		f.write("\n" + path)
+		for each_path in log[1][path]	:
+			tmp_log = each_path
+			tmp_re = re.search(r'\w+.(jpg|gif|png)',tmp_log)
+			if(tmp_re == None):
+				f.write(tmp_log)
+	f.close
 
 report = get_report()
 print_report(report)
+file_report(report)
