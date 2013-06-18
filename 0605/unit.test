@@ -1,0 +1,10 @@
+>>> from ex1_circle.py import circleArea
+>>> int(circleArea(3))
+28
+>>> int(circleArea("3.0"))
+28
+>>> int(circleArea(3.0))
+28
+>>> int(circleArea(-100))
+-1
+			
